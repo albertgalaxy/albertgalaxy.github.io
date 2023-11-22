@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Albert's 1D Chess</title>
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/1d-chess.js"></script>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+	<div class="center-container">
+	<div class="Title">Welcome to 1D Chess</div>
+	</div>
+
+	<div class="center-container">
+		<canvas id="grid" width="800" height="100"></canvas>
+	</div>
+
+
+	<div class="text-center">
+		<button id="reset-button" type="submit" style="">
+			Reset
+		</button>
+	</div>
+	
+	<div class="center-container">
+		<div class="textbox">
+
+			<h1>1D Chess</h1>
+
+			<h3>
+				Welcome to 1D Chess! This variant of chess simplifies all the 
+				complexities of traditional chess into a single 
+				dimension. Challenge the AI as white and uncover acheving a victory 
+				may prove to be more challenging than 
+				anticipated. Can you find a forced checkmate for white?
+			</h3>
+
+			<h2>Rules</h2>
+			<h3>The <span class="piece">Rook </span>
+				<img src="assets/pieces/white-rook.svg"
+				width="16px"
+				height="auto" > 
+				can move any number of squares in any direction.
+			</h3>
+
+			<h3>The <span class="piece">Knight </span>
+				<img src="assets/pieces/white-knight.svg"
+				width="16px"
+				height="auto" > 
+				can move 2 squares in any direction jumping over pieces in the way.
+			</h3>
+
+			<h3>The <span class="piece">King </span>
+				<img src="assets/pieces/white-king.svg"
+				width="16px"
+				height="auto" > 
+				can move one square in any direction.
+			</h3>
+
+			<h3>
+				You win the game if the opposition's king is attacked by one of your 
+				pieces and has no possible move to escape check.
+			</h3>
+
+			<h2>A draw happens when:</h2>
+
+			<h3>
+				<ul>
+					<li><span class="draw">There is no legal move for a player to play and 
+						they are not in check</span></li>
+					<li><span class="draw">There is not enough pieces to 
+						checkmate the other person</span></li>
+					<li><span class="draw">The same move is repeated three times in a 
+						game</span></li>
+				</ul>
+			</h3>
+
+
+		</div>
+	</div>
+
+
+	<div class="pieces-images" hidden>
+		<img id="white-king" src="assets/pieces/white-king.svg"/>
+		<img id="white-knight" src="assets/pieces/white-knight.svg"/>
+		<img id="white-rook" src="assets/pieces/white-rook.svg"/>
+		
+		<img id="black-king" src="assets/pieces/black-king.svg"/>
+		<img id="black-knight" src="assets/pieces/black-knight.svg"/>
+		<img id="black-rook" src="assets/pieces/black-rook.svg"/>
+	</div>
+
+</body>
+</html>
