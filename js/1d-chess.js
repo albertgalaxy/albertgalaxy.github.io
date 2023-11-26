@@ -1,6 +1,7 @@
 let pieceList;
 let selectedTile = -1;
 let Draw = false;
+let turn = "white";
 
 
 function getImagesfromDom() {
@@ -59,6 +60,7 @@ function drawBoard(pieceList, selectedTile) {
 
 function reset() {
 	console.log("RESET!");
+	turn = 'white'
 
 	pieceList = [ 'white-king', 'white-knight', 'white-rook', 
 				'Empty', 'Empty',
@@ -89,23 +91,27 @@ function getTileFromClick(e) {
 
 function isLegalMove(tileClicked) {
 	let lastSelectedPiece = pieceList[selectedTile];
-	if (lastSelectedPiece == 'white-knight' || lastSelectedPiece == 'black-knight') {
+	let selectedPiece = pieceList[tileClicked];
+	if (lastSelectedPiece.endsWith('knight')) {
 		console.log('Knight')
-		if (tileClicked == selectedTile - 2 || tileClicked == selectedTile + 2){
+		if ((tileClicked == selectedTile - 2 || tileClicked == selectedTile + 2) && !selectedPiece.startsWith(turn)){
 			return true;
 		}
 	}
-	else if (lastSelectedPiece == 'white-king' || lastSelectedPiece == 'black-king') {
+	else if (lastSelectedPiece.endsWith('king')) {
 		console.log('King')
-		if (Math.abs(tileClicked - selectedTile) == 1) {
+		if ((Math.abs(tileClicked - selectedTile) == 1) && !selectedPiece.startsWith(turn)) {
 			//tileClicked == selectedTile - 1 || tileClicked == selectedTile + 1){
 			return true;
 		}
 	}
 
-	else if (lastSelectedPiece == 'white-rook' || lastSelectedPiece == 'black-rook') {
+	else if (lastSelectedPiece.endsWith('rook')) {
 		console.log('Rook');
-		if (Math.abs(tileClicked - selectedTile) == 1) {
+		if (selectedPiece.startsWith(turn)){
+			return false;
+		}
+		else if (Math.abs(tileClicked - selectedTile) == 1) {
 			return true;
 		}
 		let start = Math.min(tileClicked, selectedTile);
@@ -118,7 +124,7 @@ function isLegalMove(tileClicked) {
 		return true;
 	}	
 
-	return false;
+		return false;
 }
 
 window.onload = () => {
@@ -132,7 +138,8 @@ window.onload = () => {
 	$("#grid").mousedown((e) => {
 		let tileClicked = getTileFromClick(e);
 		if (selectedTile == -1) {
-			if (pieceList[tileClicked] != 'Empty') {
+			let clickedPiece = pieceList[tileClicked];
+			if (clickedPiece != 'Empty' && clickedPiece.startsWith(turn)) {
 				selectedTile = tileClicked;
 			}
 		}
@@ -143,6 +150,13 @@ window.onload = () => {
 					let lastSelectedPiece = pieceList[selectedTile];
 					pieceList[tileClicked] = lastSelectedPiece;
 					pieceList[selectedTile] = 'Empty';
+					if (turn == 'white'){
+						turn = 'black'
+					}
+
+					else{
+						turn = 'white'
+					}
 				}
 			}
 			selectedTile = -1;
