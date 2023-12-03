@@ -8,6 +8,18 @@
   width: 130px;
   height: 50px;
   font-size: 40px;  
+  margin-right: 10px;
+}
+
+#turn {
+  background-color: rgb(255, 0, 0);
+  border-radius: 10px;
+  width: 110px;
+  height: 25px;
+  font-size: 20px; 
+  padding: 1px;
+  text-align: center; 
+  margin: 5px;
 }
 
 .center-container {
@@ -19,24 +31,6 @@
  .text-center{
     text-align: center;
  }
-
- .box1{
-    width: 100px;
-    height: 100px;
-    background-color: #b88c64;
-    float: left;
-    margin-bottom: 10px;
- }
-
- .box2{
-  width: 100px;
-  height: 100px;
-  background-color: #f8dcb4;
-  float: left;
-  margin-bottom: 10px;
-}
-
-
 
 .float-clear {
   clear: both;
@@ -59,7 +53,6 @@ body{
   width: 850px;
   height: 100px;
   background-color: azure;
-  margin: 10px;
   text-align: center;
   font-size: 85px;
 }

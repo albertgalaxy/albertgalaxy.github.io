@@ -16,6 +16,10 @@ function getImagesfromDom() {
 	};
 }
 
+function displayTurn(turn){
+	document.getElementById('turn').innerHTML = `Turn: ${turn}`;
+	document.getElementById('turn').style.color = turn;
+}
 
 function drawBoard(pieceList, selectedTile) {
 
@@ -24,7 +28,6 @@ function drawBoard(pieceList, selectedTile) {
 		let ctx = cnv.getContext("2d");
 
 		let pieces = getImagesfromDom();
-		const id = 'black'
 		const pieceScale = 100;
 		const darkTileColor = "#b58863";
 		const lightTileColor = "#f0d9b5 ";
@@ -53,6 +56,9 @@ function drawBoard(pieceList, selectedTile) {
 		for (let i = 0; i < pieceList.length; i++) {
 			if (pieceList[i] != "Empty") {			
 				ctx.drawImage(pieces[pieceList[i]], i*100, 0, pieceScale, pieceScale);
+
+				displayTurn(turn)
+		
 			}
 		}
 	}
